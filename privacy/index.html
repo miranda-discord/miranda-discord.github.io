@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Miranda</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --accent: #887aff;
+            --divider: #1a1a1a;
+            --muted: #6a6a6a;
+            --tag-bg: #1a1a1a;
+            --tag-border: #2a2a2a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--divider);
+            margin: 0;
+        }
+
+        .nav {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeUp 0.01s ease forwards;
+        }
+
+        .nav a {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .nav a:hover {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-sep {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .nav-current {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        .hero {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 32px 48px;
+            opacity: 0;
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .hero-name {
+            font-size: 2rem;
+            font-weight: 450;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+
+        .hero-sub {
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 32px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            opacity: 0;
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .policy-section {
+            padding: 36px 0;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .policy-section:last-child {
+            border-bottom: none;
+        }
+
+        .policy-section h2 {
+            font-size: 1.4rem;
+            font-weight: 450;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .policy-section p {
+            font-size: 0.97rem;
+            line-height: 1.75;
+            color: var(--text);
+            opacity: 0.88;
+            margin-bottom: 12px;
+        }
+
+        .policy-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .placeholder {
+            display: inline-block;
+            background: var(--tag-bg);
+            border: 1px dashed var(--tag-border);
+            border-radius: 4px;
+            padding: 2px 10px;
+            color: var(--muted);
+            font-size: 0.88em;
+            font-style: italic;
+        }
+
+        .policy-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .policy-section ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.97rem;
+            line-height: 1.65;
+            color: var(--text);
+            opacity: 0.88;
+        }
+
+        .policy-section ul li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: 9px;
+            flex-shrink: 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--divider);
+            padding: 24px 32px;
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeUp 0.25s ease forwards 0.48s;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero, .content, .nav {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero-name {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="/">Miranda</a>
+        <span class="nav-sep">/</span>
+        <span class="nav-current">Privacy Policy</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="hero">
+        <p class="hero-name">Privacy Policy</p>
+        <p class="hero-sub">Last updated: <span class="placeholder">fill in date</span></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="content">
+
+
+        <div class="policy-section">
+            <h2>What Data We Collect</h2>
+            <p>Miranda collects the minimum amount of data required to function. This includes:</p>
+            <ul>
+                <li>Your Discord user ID</li>
+                <li>Your Discord username</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>How We Use Your Data</h2>
+	    <p>When we process your data it is only used for memory purposes like the economy commands. Your user id as a .json file (named user-id.json) is inside of a directory called "data". What is inside looks like this:</p>
+<pre><code>
+{
+    "wallet": 35000,
+    "bank": 0,
+    "lastDaily": 1779488916028,
+    "lastWork": 1779488918627,
+    "lastRob": null,
+    "inBlackjack": false,
+    "inMines": false,
+    "inFish": false,
+    "blackjackState": null,
+    "minesState": null,
+    "fishState": null
+}
+</code></pre>
+        </div>
+
+        <div class="policy-section">
+            <h2>Third Party Services</h2>
+            <p>Miranda uses the following third party services to power certain commands:</p>
+            <ul>
+                <li>wttr.in for weather data</li>
+                <li>Groq / NavyAI for AI responses</li>
+                <li>TinyURL for URL shortening</li>
+                <li>dictionaryapi.dev for word definitions</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>Data Deletion</h2>
+		<p>Reach out to me to request data deletion at the email nixtoasty (at) polynet.me.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>Contact</h2>
+            <p>If you have any questions about this privacy policy, you can reach out to me directly at nixtoasty (at) polynet.me.</p>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <footer>
+        <p>Miranda is not affiliated with Discord Inc.</p>
+        <a href="https://nixtoasty.me/" target="_blank">nixtoasty.me</a>
+    </footer>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"a50e79195557497e9e711a19c42dcbf6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
