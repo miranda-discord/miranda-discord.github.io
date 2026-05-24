@@ -8,4 +8,15 @@ The discord bot that you will love. Minimalist but still command rich and will f
 - Answer: I look forward to making Miranda open source, however the internal source for Miranda is very messy and would not be of production-grade to make it open source right now.
 - Question: Can i suggest a new command to add to miranda?
 - Answer: Yes you can! Reach out to me on [my email](mailto:nixtoasty@polynet.me) or on my discord with my username nixtoasty.
+# List of Commands
+The list of all commands (in their respective categories) for the Miranda bot.
+## Fun
+- 8ball ( `/8ball` )
+- Gay Meter ( `/gay-meter` )
+- Make a Decision ( `/make-a-decision` )
+- Curse Me ( `/curse-me` )
+- Suspicious Meter ( `/suspicious-meter` )
+- NPC Check ( `/npc-check` )
+- Vibe Check ( `/vibe-check` )
+- Roast Me ( `/roast-me` )
 
