@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miranda</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --accent: #887aff;
+            --divider: #1a1a1a;
+            --card: #0f0b16;
+            --card-hover: #121019;
+            --muted: #6a6a6a;
+            --tag-bg: #1a1a1a;
+            --tag-border: #2a2a2a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--divider);
+            margin: 0;
+        }
+
+        .hero {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 80px 32px 60px;
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 28px;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.01s ease forwards;
+        }
+
+        .hero-pfp {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .hero-name {
+            font-size: 2.6rem;
+            font-weight: 450;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .hero-motto {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 560px;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .hero-motto::before {
+            content: '"';
+        }
+
+        .hero-motto::after {
+            content: '"';
+        }
+
+        .section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 48px 32px;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .section + .section {
+            padding-top: 0;
+        }
+
+        .section-label {
+            font-size: 1.4rem;
+            font-weight: 450;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .section-body {
+            font-size: 0.97rem;
+            color: var(--text);
+            line-height: 1.75;
+            opacity: 0.88;
+        }
+
+        .section-body a {
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 1px;
+        }
+
+        .features-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 48px 32px;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.97rem;
+            line-height: 1.65;
+            color: var(--text);
+            opacity: 0.88;
+        }
+
+        .features-list li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: 9px;
+            flex-shrink: 0;
+        }
+
+        code {
+            font-family: 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.88em;
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+
+        .commands-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 32px 48px;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .commands-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .cmd-tag {
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 0.82rem;
+            font-family: 'Cascadia Code', 'Consolas', monospace;
+            color: var(--text);
+            opacity: 0.7;
+            cursor: default;
+            transition: background 0.1s ease, opacity 0.1s ease, transform 0.1s ease;
+        }
+
+        .cmd-tag:hover {
+            background: #151220;
+            opacity: 1;
+        }
+
+        .cta-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 32px 80px;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.01s ease forwards 0.01s;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.92rem;
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.1s ease, transform 0.1s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background: #9589ff;
+            text-decoration: none;
+        }
+
+        .cta-btn.secondary {
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--text);
+        }
+
+        .cta-btn.secondary:hover {
+            background: #151220;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        footer {
+            border-top: 1px solid var(--divider);
+            padding: 24px 32px;
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeUp 0.25s ease forwards 0.48s;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-name {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 48px 20px 40px;
+            }
+
+            .section, .features-section, .commands-section, .cta-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <div class="hero-header">
+            <img class="hero-pfp" src="/assets/pfp.webp" alt="Miranda" onerror="this.style.display='none'">
+            <span class="hero-name">Miranda</span>
+        </div>
+        <p class="hero-motto">The discord bot that you will love. Minimalist but still command rich and will fit perfectly inside of your DMS.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <p class="section-label">Description</p>
+        <p class="section-body">
+            Miranda was made as a competing bot to the bot <a href="https://phoenixbot.lol/" target="_blank">phoenixbot.lol</a>. Phoenix is managed by a person who does not have any support for their own community and neglects all of their community people. Miranda is the opposite of that. Managed by <a href="https://nixtoasty.me/" target="_blank">nixtoasty</a>, you will have a good experience with Miranda.
+        </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="features-section">
+        <p class="section-label">Key Features</p>
+        <ul class="features-list">
+            <li>Has numerous commands powered by APIs such as <code>weather</code>, <code>define</code>, <code>fact</code>, <code>lorem</code>, and more.</li>
+            <li>Does not require any sets of data other than user info like a user's user id and their nickname.</li>
+        </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="commands-section">
+        <p class="section-label">Commands</p>
+        <div class="commands-grid">
+            <span class="cmd-tag">/8ball</span>
+            <span class="cmd-tag">/gay-meter</span>
+            <span class="cmd-tag">/make-a-decision</span>
+            <span class="cmd-tag">/curse-me</span>
+            <span class="cmd-tag">/suspicious-meter</span>
+            <span class="cmd-tag">/vibe-check</span>
+            <span class="cmd-tag">/npc-check</span>
+            <span class="cmd-tag">/roast-me</span>
+            <span class="cmd-tag">/skill-issue</span>
+            <span class="cmd-tag">/avatar</span>
+            <span class="cmd-tag">/ping</span>
+            <span class="cmd-tag">/userinfo</span>
+            <span class="cmd-tag">/banner</span>
+            <span class="cmd-tag">/botinfo</span>
+            <span class="cmd-tag">/timestamp</span>
+            <span class="cmd-tag">/snowflake</span>
+            <span class="cmd-tag">/color</span>
+            <span class="cmd-tag">/weather</span>
+            <span class="cmd-tag">/calculator</span>
+            <span class="cmd-tag">/shorten-url</span>
+            <span class="cmd-tag">/base64</span>
+            <span class="cmd-tag">/uuid</span>
+            <span class="cmd-tag">/ai-ask</span>
+            <span class="cmd-tag">/wallet</span>
+            <span class="cmd-tag">/daily</span>
+            <span class="cmd-tag">/work</span>
+            <span class="cmd-tag">/rob</span>
+            <span class="cmd-tag">/coinflip</span>
+            <span class="cmd-tag">/blackjack</span>
+            <span class="cmd-tag">/mines</span>
+            <span class="cmd-tag">/fish</span>
+            <span class="cmd-tag">/leaderboard</span>
+            <span class="cmd-tag">/joke</span>
+            <span class="cmd-tag">/fact</span>
+            <span class="cmd-tag">/define</span>
+            <span class="cmd-tag">/translate</span>
+            <span class="cmd-tag">/ship</span>
+            <span class="cmd-tag">/horoscope</span>
+            <span class="cmd-tag">/wyr</span>
+            <span class="cmd-tag">/truth-or-dare</span>
+            <span class="cmd-tag">/compliment</span>
+            <span class="cmd-tag">/fortune-cookie</span>
+            <span class="cmd-tag">/daily-prophecy</span>
+            <span class="cmd-tag">/uwuify</span>
+            <span class="cmd-tag">/mock</span>
+            <span class="cmd-tag">/clap</span>
+            <span class="cmd-tag">/dice</span>
+            <span class="cmd-tag">/rate</span>
+            <span class="cmd-tag">/reverse</span>
+            <span class="cmd-tag">/qrcode</span>
+            <span class="cmd-tag">/password</span>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-section">
+        <p class="section-label">Get Started</p>
+        <p class="section-body">Add Miranda to your Discord account and start using commands instantly in any DM or server.</p>
+        <div class="cta-row">
+            <a class="cta-btn" href="https://discord.com/oauth2/authorize?client_id=1505642819564605521" target="_blank">Add to Discord</a>
+            <a class="cta-btn secondary" href="https://nixtoasty.me/" target="_blank">Made by nixtoasty</a>
+            <a class="cta-btn secondary" href="/privacy-policy.php" target="_blank">Privacy Policy</a>
+            <a class="cta-btn secondary" href="/tos.php" target="_blank">TOS</a>
+</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <footer>
+        <p>Miranda is not affiliated with Discord Inc.</p>
+        <a href="https://nixtoasty.me/" target="_blank">nixtoasty.me</a>
+    </footer>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"a50e79195557497e9e711a19c42dcbf6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
